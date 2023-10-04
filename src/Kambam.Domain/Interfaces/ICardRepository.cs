@@ -4,9 +4,10 @@ namespace Kambam.Domain.Interfaces;
 
 public interface ICardRepository
 {
-    IEnumerable<Card> GetAll();
-    Card Insert(Card card);
-    Card Update(Card card);
-    IEnumerable<Card> Delete(int cardId);
-
+    Task<bool> ExistsAsync(int id);
+    Task<Card> GetByIdAsync(int id);
+    Task<IEnumerable<Card>> GetAllAsync();
+    Task<Card> InsertAsync(Card card);
+    Task<Card> UpdateAsync(Card card);
+    Task<IEnumerable<Card>> DeleteAsync(int cardId);
 }

@@ -1,10 +1,10 @@
-using Kambam.Domain.Dto;
+using Kambam.Domain.Entities;
 
 public interface ICardService
 {
-    IEnumerable<CardDto> GetAll();
-    CardDto Add(CardDto cardDto);
-    CardDto Change(CardDto cardDto);
-    IEnumerable<CardDto> Remove(int id);
+    Task<CardsProcessingResult> GetAll();
+    Task<CardProcessingResult> Add(Card card);
+    Task<CardProcessingResult> Change(Card card);
+    Task<CardsProcessingResult> Remove(int id);
 
 }
