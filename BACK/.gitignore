@@ -398,7 +398,7 @@ FodyWeavers.xsd
 *.sln.iml
 
 # Ignore all appsettings.json files
-appsettings.*.json
+**/appsettings*.json
 
-# Allow the appsettings.example.json file
+# Allow appsettings.example.json in the specific folder
 !appsettings.example.json
