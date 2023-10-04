@@ -19,9 +19,9 @@ public class CardsController : ControllerBase
     }
 
     [HttpGet()]
-    [ProducesResponseType(typeof(List<Card>), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(List<CardEntity>), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
-    public async Task<ActionResult<List<Card>>> GetCards()
+    public async Task<ActionResult<List<CardEntity>>> GetCards()
     {
         var result = await _cardService.GetAll();
 
@@ -32,9 +32,9 @@ public class CardsController : ControllerBase
     }
 
     [HttpPost()]
-    [ProducesResponseType(typeof(Card), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(CardEntity), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-    public async Task<ActionResult<Card>> InsertCard([FromBody] Card card)
+    public async Task<ActionResult<CardEntity>> InsertCard([FromBody] CardEntity card)
     {
         // TODO: use FluentValidation
         if (card.Id > 0)
@@ -55,9 +55,9 @@ public class CardsController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
-    [ProducesResponseType(typeof(Card), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(CardEntity), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-    public async Task<ActionResult<Card>> UpdateCard([FromRoute] int id, [FromBody] Card card)
+    public async Task<ActionResult<CardEntity>> UpdateCard([FromRoute] int id, [FromBody] CardEntity card)
     {
         card.Id = id;
 
@@ -80,9 +80,9 @@ public class CardsController : ControllerBase
     }
 
     [HttpDelete("{id:int}")]
-    [ProducesResponseType(typeof(List<Card>), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(List<CardEntity>), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-    public async Task<ActionResult<Card>> DeleteCard([FromRoute] int id)
+    public async Task<ActionResult<CardEntity>> DeleteCard([FromRoute] int id)
     {
         var result = await _cardService.Remove(id);
 

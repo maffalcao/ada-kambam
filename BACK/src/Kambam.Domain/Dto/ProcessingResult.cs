@@ -15,11 +15,11 @@ public class ProcessinResult
 
 public sealed class CardsProcessingResult : ProcessinResult
 {
-    public ReadOnlyCollection<Card> Cards { get; private set; }
+    public IEnumerable<CardEntity> Cards { get; private set; }
 
     private CardsProcessingResult() { }
 
-    private CardsProcessingResult(ReadOnlyCollection<Card> cards)
+    private CardsProcessingResult(IEnumerable<CardEntity> cards)
     {
         Cards = cards;
         IsSuccess = cards is not null;
@@ -28,10 +28,10 @@ public sealed class CardsProcessingResult : ProcessinResult
     public static CardsProcessingResult Get() =>
        new();
 
-    public static CardsProcessingResult Get(ReadOnlyCollection<Card> cards) =>
+    public static CardsProcessingResult Get(IEnumerable<CardEntity> cards) =>
         new(cards);
 
-    public void AddCards(ReadOnlyCollection<Card> cards)
+    public void AddCards(IEnumerable<CardEntity> cards)
     {
         Cards = cards;
         IsSuccess = cards is not null;
@@ -41,15 +41,15 @@ public sealed class CardsProcessingResult : ProcessinResult
 
 public sealed class CardProcessingResult : ProcessinResult
 {
-    public Card Card { get; private set; }
+    public CardEntity Card { get; private set; }
 
-    private CardProcessingResult(Card card)
+    private CardProcessingResult(CardEntity card)
     {
         Card = card;
         IsSuccess = card is not null;
     }
 
-    public static CardProcessingResult Get(Card card) =>
+    public static CardProcessingResult Get(CardEntity card) =>
          new CardProcessingResult(card);
 
 }

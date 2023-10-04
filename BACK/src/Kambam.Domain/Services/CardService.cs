@@ -3,6 +3,7 @@ using Kambam.Domain.Interfaces;
 
 namespace Kambam.Domain.Services;
 
+// TODO: use card dto's instead of card entities in returns & parameters
 public class CardService : ICardService
 {
     private readonly ICardRepository _repository;
@@ -12,7 +13,7 @@ public class CardService : ICardService
         _repository = repository;
     }
 
-    public async Task<CardProcessingResult> Add(Card card)
+    public async Task<CardProcessingResult> Add(CardEntity card)
     {
         var newCard = await _repository.InsertAsync(card);
         var result = CardProcessingResult.Get(newCard);
@@ -23,22 +24,18 @@ public class CardService : ICardService
         return CardProcessingResult.Get(newCard);
     }
 
-    public async Task<CardProcessingResult> Change(Card card)
+
+    public async Task<CardProcessingResult> Change(CardEntity card)
     {
         var result = CardProcessingResult.Get(card);
-
-        var cardExist = await _repository.ExistsAsync(card.Id);
-
-        if (cardExist is false)
-        {
-            result.Fail($"Card {card.Id} does not exist");
-            return result;
-        }
 
         var changedCard = await _repository.UpdateAsync(card);
 
         if (changedCard is null)
-            result.Fail($"Error trying to update a new card {card.Id}");
+        {
+            result.Fail($"Card {card.Id} does not exist");
+            return result;
+        }                
 
         return result;
     }
@@ -53,15 +50,13 @@ public class CardService : ICardService
     {
         var result = CardsProcessingResult.Get();
 
-        var card = await _repository.GetByIdAsync(id);
+        var deleteSuccessfully = await _repository.DeleteAsync(id);        
 
-        if (card is null)
+        if (deleteSuccessfully is false)
         {
-            result.Fail($"Card {card.Id} does not exist");
+            result.Fail($"Card {id} does not exist");
             return result;
-        }
-
-        await _repository.DeleteAsync(id);
+        }        
 
         var cards = await _repository.GetAllAsync();
         result.AddCards(cards);

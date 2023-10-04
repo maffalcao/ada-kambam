@@ -1,6 +1,6 @@
 namespace Kambam.Domain.Entities;
 
-public class Card
+public class CardEntity
 {
     public int Id { get; set; }
     public string Titulo { get; set; }

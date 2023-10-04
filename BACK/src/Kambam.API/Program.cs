@@ -1,14 +1,21 @@
 using Kambam.Domain.Interfaces;
 using Kambam.Domain.Services;
+using Kambam.Infra.Context;
+using Kambam.Infra.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddScoped<ICardService, CardService>();
-//builder.Services.AddScoped<ICardRepository, CardRepository>();
+builder.Services.AddScoped<ICardRepository, CardRepository>();
+
+// Configure Entity Framework Core for PostgreSQL with 'MyContext'
+builder.Services.AddDbContext<MyContext>(
+    options => options.UseNpgsql(builder.Configuration.GetConnectionString("Postgres"))
+);
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
