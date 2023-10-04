@@ -1,10 +1,11 @@
 using System.Net;
-using Kambam.API.Extensions;
 using Kambam.Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Kambam.API.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("[controller]")]
 public class CardsController : ControllerBase

@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "78658bcd-e0d3-4cb6-ad6f-9edb7b0873dc",
+		"name": "KambamBack",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23504888"
+	},
+	"item": [
+		{
+			"name": "GetAll",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{kambam_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{kamban_host}}/Cards",
+					"host": [
+						"{{kamban_host}}"
+					],
+					"path": [
+						"Cards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"login\": \"bla\",\r\n    \"senha\": \"ble\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{kamban_host}}/Login",
+					"host": [
+						"{{kamban_host}}"
+					],
+					"path": [
+						"Login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{kambam_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n  \"titulo\": \"finalizar o teste técnico\",\r\n  \"conteudo\": \"O objeti é finalizar o teste técnico com a maior qualidade possível\",\r\n  \"lista\": \"Fazendo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{kamban_host}}/cards",
+					"host": [
+						"{{kamban_host}}"
+					],
+					"path": [
+						"cards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{kambam_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n    \"id\": 0,\r\n    \"titulo\": \"finalizar o teste técnico\",\r\n    \"conteudo\": \"O objeti é finalizar o teste técnico com a maior qualidade possível\",\r\n    \"lista\": \"Feito\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{kamban_host}}/cards/{{kambam_cardId}}",
+					"host": [
+						"{{kamban_host}}"
+					],
+					"path": [
+						"cards",
+						"{{kambam_cardId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{kambam_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{kamban_host}}/cards/{{kambam_cardId}}",
+					"host": [
+						"{{kamban_host}}"
+					],
+					"path": [
+						"cards",
+						"{{kambam_cardId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
