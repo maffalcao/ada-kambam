@@ -6,7 +6,7 @@ namespace Kambam.Infra.Context;
 
 public class MyContext : DbContext
 {
-    public DbSet<CardEntity>? Cards { get; set; }
+    public DbSet<CardEntity> Cards { get; set; }
 
     public MyContext(DbContextOptions<MyContext> options) : base(options) { }
 

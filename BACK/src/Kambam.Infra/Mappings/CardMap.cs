@@ -15,7 +15,6 @@ public class CardMap : IEntityTypeConfiguration<CardEntity>
             .IsRequired();
 
         builder.Property(p => p.Titulo)
-            .IsRequired()
             .HasMaxLength(256);
 
         builder.Property(p => p.Lista)

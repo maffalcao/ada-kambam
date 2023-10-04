@@ -6,4 +6,9 @@ public class CardEntity
     public string Titulo { get; set; }
     public string Conteudo { get; set; }
     public string Lista { get; set; }
+
+    public bool IsValid()
+    {
+        return (Conteudo is not null) && (Lista is not null);
+    }
 }

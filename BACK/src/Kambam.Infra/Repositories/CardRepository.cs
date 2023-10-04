@@ -48,12 +48,7 @@ public class CardRepository : ICardRepository
 
     public async Task<CardEntity> InsertAsync(CardEntity card)
     {
-        var entity = await GetByIdAsync(card.Id);
-
-        if (entity == null)
-            return null;
-
-        _dataSet.Remove(entity);
+        await _context.AddAsync(card);
         await _context.SaveChangesAsync();
 
         return card;

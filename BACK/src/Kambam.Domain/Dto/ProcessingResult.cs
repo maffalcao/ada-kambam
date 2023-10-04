@@ -8,7 +8,7 @@ public class ProcessinResult
 
     public void Fail(string message)
     {
-        IsSuccess = true;
+        IsSuccess = false;
         Message = message;
     }
 }
