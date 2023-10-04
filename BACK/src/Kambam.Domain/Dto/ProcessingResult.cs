@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using Kambam.Domain.Entities;
 
 public class ProcessinResult
@@ -14,11 +15,11 @@ public class ProcessinResult
 
 public sealed class CardsProcessingResult : ProcessinResult
 {
-    public IEnumerable<Card> Cards { get; private set; }
+    public ReadOnlyCollection<Card> Cards { get; private set; }
 
     private CardsProcessingResult() { }
 
-    private CardsProcessingResult(IEnumerable<Card> cards)
+    private CardsProcessingResult(ReadOnlyCollection<Card> cards)
     {
         Cards = cards;
         IsSuccess = cards is not null;
@@ -27,10 +28,10 @@ public sealed class CardsProcessingResult : ProcessinResult
     public static CardsProcessingResult Get() =>
        new();
 
-    public static CardsProcessingResult Get(IEnumerable<Card> cards) =>
+    public static CardsProcessingResult Get(ReadOnlyCollection<Card> cards) =>
         new(cards);
 
-    public void AddCards(IEnumerable<Card> cards)
+    public void AddCards(ReadOnlyCollection<Card> cards)
     {
         Cards = cards;
         IsSuccess = cards is not null;
