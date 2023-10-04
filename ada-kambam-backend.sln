@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{79340958-3433-4BBB-A09F-E09439EC587A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kambam.Domain", "src\Kambam.Domain\Kambam.Domain.csproj", "{C18F24B1-73F7-48E5-B927-900D6DBD5A57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kambam.Infra", "src\Kambam.Infra\Kambam.Infra.csproj", "{8F141817-7282-4979-A04D-2103A39C1F4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kambam.API", "src\Kambam.API\Kambam.API.csproj", "{B61D80A0-D6F2-4510-8E92-B0E128F12A68}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C18F24B1-73F7-48E5-B927-900D6DBD5A57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C18F24B1-73F7-48E5-B927-900D6DBD5A57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C18F24B1-73F7-48E5-B927-900D6DBD5A57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C18F24B1-73F7-48E5-B927-900D6DBD5A57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F141817-7282-4979-A04D-2103A39C1F4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F141817-7282-4979-A04D-2103A39C1F4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F141817-7282-4979-A04D-2103A39C1F4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F141817-7282-4979-A04D-2103A39C1F4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B61D80A0-D6F2-4510-8E92-B0E128F12A68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B61D80A0-D6F2-4510-8E92-B0E128F12A68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B61D80A0-D6F2-4510-8E92-B0E128F12A68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B61D80A0-D6F2-4510-8E92-B0E128F12A68}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C18F24B1-73F7-48E5-B927-900D6DBD5A57} = {79340958-3433-4BBB-A09F-E09439EC587A}
+		{8F141817-7282-4979-A04D-2103A39C1F4B} = {79340958-3433-4BBB-A09F-E09439EC587A}
+		{B61D80A0-D6F2-4510-8E92-B0E128F12A68} = {79340958-3433-4BBB-A09F-E09439EC587A}
+	EndGlobalSection
+EndGlobal
