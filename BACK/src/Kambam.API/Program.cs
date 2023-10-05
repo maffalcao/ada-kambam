@@ -10,18 +10,14 @@ using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddScoped<ICardService, CardService>();
-builder.Services.AddScoped<ICardRepository, CardRepository>();
-
-// Configure Entity Framework Core for PostgreSQL with 'MyContext'
-builder.Services.AddDbContext<MyContext>(
-    options => options.UseNpgsql(builder.Configuration.GetConnectionString("Postgres"))
-);
+// Register AutoMapper using the assembly containing the Program class
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 
+// Configure JWT authentication for securing API endpoints.
 builder.Services.AddAuthentication(jwt =>
 {
+
     jwt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     jwt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 }).AddJwtBearer(o =>
@@ -40,9 +36,15 @@ builder.Services.AddAuthentication(jwt =>
     };
 });
 
+// Add services to the DI container.
+builder.Services.AddScoped<ICardService, CardService>();
+builder.Services.AddScoped<ICardRepository, CardRepository>();
 builder.Services.AddSingleton<IJWTManagerRepository, JWTManagerRepository>();
 
-
+// Configure Entity Framework Core for PostgreSQL with 'MyContext'
+builder.Services.AddDbContext<MyContext>(
+    options => options.UseNpgsql(builder.Configuration.GetConnectionString("Postgres"))
+);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
