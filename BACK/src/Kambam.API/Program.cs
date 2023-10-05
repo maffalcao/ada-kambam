@@ -45,6 +45,12 @@ builder.Services.AddDbContext<MyContext>(
     options => options.UseNpgsql(builder.Configuration.GetConnectionString("Postgres"))
 );
 
+// Register LogActionFilter to run on all Controllers and Views.
+builder.Services.AddControllersWithViews(options =>
+{
+    options.Filters.Add<LogActionFilter>();
+});
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
