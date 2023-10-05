@@ -1,4 +1,4 @@
-namespace Kambam.Domain.Dto;
+namespace Kambam.Service.Dtos;
 
 public class CardDto
 {

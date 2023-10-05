@@ -1,6 +1,8 @@
 using System.Collections.ObjectModel;
 using Kambam.Domain.Entities;
 
+namespace Kambam.Service.Dtos;
+
 public class ProcessinResult
 {
     public bool IsSuccess { get; protected set; }

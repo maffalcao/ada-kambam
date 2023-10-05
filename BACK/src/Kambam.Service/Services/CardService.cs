@@ -1,7 +1,8 @@
 using Kambam.Domain.Entities;
 using Kambam.Domain.Interfaces;
+using Kambam.Service.Dtos;
 
-namespace Kambam.Domain.Services;
+namespace Kambam.Services.Services;
 
 // TODO: use card dto's instead of card entities in returns & parameters
 public class CardService : ICardService
@@ -35,7 +36,7 @@ public class CardService : ICardService
         {
             result.Fail($"Card {card.Id} does not exist");
             return result;
-        }                
+        }
 
         return result;
     }
@@ -50,13 +51,13 @@ public class CardService : ICardService
     {
         var result = CardsProcessingResult.Get();
 
-        var deleteSuccessfully = await _repository.DeleteAsync(id);        
+        var deleteSuccessfully = await _repository.DeleteAsync(id);
 
         if (deleteSuccessfully is false)
         {
             result.Fail($"Card {id} does not exist");
             return result;
-        }        
+        }
 
         var cards = await _repository.GetAllAsync();
         result.AddCards(cards);

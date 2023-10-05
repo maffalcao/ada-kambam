@@ -1,4 +1,5 @@
 using Kambam.Domain.Entities;
+using Kambam.Service.Dtos;
 
 public interface ICardService
 {
@@ -6,5 +7,4 @@ public interface ICardService
     Task<CardProcessingResult> Add(CardEntity card);
     Task<CardProcessingResult> Change(CardEntity card);
     Task<CardsProcessingResult> Remove(int id);
-
 }

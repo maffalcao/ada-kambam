@@ -1,9 +1,9 @@
 using System.Text;
 using Kambam.API.Authentication;
 using Kambam.Domain.Interfaces;
-using Kambam.Domain.Services;
 using Kambam.Infra.Context;
 using Kambam.Infra.Repositories;
+using Kambam.Services.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
