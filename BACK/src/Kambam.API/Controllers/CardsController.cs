@@ -56,8 +56,6 @@ public class CardsController : ControllerBase
         if (result.IsSuccess is false)
             return NotFound(result.Message);
 
-        LogMessage(id, "Atualizar");
-
         return Ok(result.Card);
     }
 
@@ -69,21 +67,7 @@ public class CardsController : ControllerBase
         if (result.IsSuccess is false)
             return NotFound(result.Message);
 
-        LogMessage(id, "Remover");
-
         return Ok(result.Cards);
-    }
-
-    // Deviating from the original specification to simplify logging. In this approach,
-    // a private method 'LogMessage' is used within the controller to log 'delete' and 'update' actions.
-    // Retrieving the 'Titulo' for 'delete' posed challenges as it was not explicitly available in the operation.
-    // This approach provides a more straightforward and self-contained solution, considering both simplicity
-    // and potential ambiguity in the original specification.
-    private void LogMessage(int cardId, string actionName)
-    {
-        var utcNow = DateTime.UtcNow.ToString("dd/MM/yyyy HH:mm:ss");
-        var message = $"{utcNow} - Card {cardId} - {actionName}";
-        _logger.LogInformation(message);
     }
 
 }

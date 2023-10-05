@@ -27,10 +27,11 @@ public sealed class CardsServiceResult : ServiceResult
     public static CardsServiceResult Get(IEnumerable<CardWithIdDto> dtos) =>
         new(dtos);
 
-    public void AddCards(IEnumerable<CardWithIdDto> dtos)
+    public CardsServiceResult AddCards(IEnumerable<CardWithIdDto> dtos)
     {
         Cards = dtos;
         IsSuccess = dtos is not null;
+        return this;
     }
 
     public CardsServiceResult Fail(string message)

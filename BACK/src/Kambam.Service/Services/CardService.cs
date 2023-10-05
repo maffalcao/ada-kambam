@@ -5,7 +5,7 @@ using Kambam.Service.Dtos;
 
 namespace Kambam.Services.Services;
 
-// TODO: use card dto's instead of card entities in returns & parameters
+// We'll use a mapper to shield the API layer from direct access to domain entities.
 public class CardService : ICardService
 {
     private readonly ICardRepository _repository;
@@ -23,12 +23,6 @@ public class CardService : ICardService
 
         var cardToAdd = _mapper.Map<CardEntity>(cardDto);
         var newCard = await _repository.InsertAsync(cardToAdd);
-
-        if (newCard is null)
-        {
-            return result.Fail("Error trying to add a new card");
-        }
-
         var cardWithIdDto = _mapper.Map<CardWithIdDto>(newCard);
 
         return result.AddCard(cardWithIdDto);
@@ -37,7 +31,6 @@ public class CardService : ICardService
 
     public async Task<CardServiceResult> Change(int cardId, CardDto cardDto)
     {
-
         var result = CardServiceResult.Get();
 
         var cardToChange = _mapper.Map<CardEntity>(cardDto);
@@ -60,7 +53,7 @@ public class CardService : ICardService
         var cards = await _repository.GetAllAsync();
         var cardDtos = _mapper.Map<List<CardWithIdDto>>(cards);
 
-        return CardsServiceResult.Get(cardDtos);
+        return CardsServiceResult.Get().AddCards(cardDtos);
     }
 
     public async Task<CardsServiceResult> Remove(int id)
@@ -74,9 +67,6 @@ public class CardService : ICardService
             return result.Fail($"Card {id} does not exist");
         }
 
-        result = await GetAll();
-
-        return result;
+        return await GetAll();
     }
-
 }
