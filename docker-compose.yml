@@ -13,6 +13,12 @@ services:
       context: .
       dockerfile: BACK/src/Kambam.API/Dockerfile
 
+  kambam.front:
+    image: ${DOCKER_REGISTRY-}kambamfront
+    build:
+      context: .
+      dockerfile: FRONT/Dockerfile
+
 volumes:
   postgres_data:
   pgadmin_data:

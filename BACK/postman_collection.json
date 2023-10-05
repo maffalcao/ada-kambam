@@ -18,10 +18,12 @@
 					}
 				],
 				"url": {
-					"raw": "{{kamban_host}}/Cards",
+					"raw": "http://localhost:5000/Cards",
+					"protocol": "http",
 					"host": [
-						"{{kamban_host}}"
+						"localhost"
 					],
+					"port": "5000",
 					"path": [
 						"Cards"
 					]
@@ -44,10 +46,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{kamban_host}}/Login",
+					"raw": "http://localhost:5000/Login",
+					"protocol": "http",
 					"host": [
-						"{{kamban_host}}"
+						"localhost"
 					],
+					"port": "5000",
 					"path": [
 						"Login"
 					]
@@ -76,10 +80,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{kamban_host}}/cards",
+					"raw": "http://localhost:5000/cards",
+					"protocol": "http",
 					"host": [
-						"{{kamban_host}}"
+						"localhost"
 					],
+					"port": "5000",
 					"path": [
 						"cards"
 					]
@@ -108,10 +114,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{kamban_host}}/cards/{{kambam_cardId}}",
+					"raw": "http://localhost:5000/cards/{{kambam_cardId}}",
+					"protocol": "http",
 					"host": [
-						"{{kamban_host}}"
+						"localhost"
 					],
+					"port": "5000",
 					"path": [
 						"cards",
 						"{{kambam_cardId}}"
@@ -132,10 +140,12 @@
 					}
 				],
 				"url": {
-					"raw": "{{kamban_host}}/cards/{{kambam_cardId}}",
+					"raw": "http://localhost:5000/cards/{{kambam_cardId}}",
+					"protocol": "http",
 					"host": [
-						"{{kamban_host}}"
+						"localhost"
 					],
+					"port": "5000",
 					"path": [
 						"cards",
 						"{{kambam_cardId}}"

@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>11570e84-eb0d-4fa5-8773-a09baa2c257a</ProjectGuid>
+    <ProjectGuid>ce153fd6-1514-40e5-a90e-ec2894a5daad</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
     <DockerServiceName>kambam.api</DockerServiceName>

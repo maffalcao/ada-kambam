@@ -1,5 +1,8 @@
-const AUTH_URL = 'http://localhost:5000/login';
-const CARD_URL = 'http://localhost:5000/cards';
+const AUTH_HOST_PORT = process.env.AUTH_URL || 'http://localhost:5000';
+const CARD_HOST_PORT = process.env.CARD_URL || 'http://localhost:5000';
+
+const AUTH_URL = `${AUTH_HOST_PORT}/login`;
+const CARD_URL = `${CARD_HOST_PORT}/cards`;
 
 const CREDENTIAL = { login: 'letscode', senha: 'lets@123' };
 

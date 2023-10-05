@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kambam.Service", "src\Kamba
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kambam.Tests", "src\Kambam.Tests\Kambam.Tests.csproj", "{D2092A88-4798-4330-89E2-90C954BF51C6}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{11570E84-EB0D-4FA5-8773-A09BAA2C257A}"
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{CE153FD6-1514-40E5-A90E-EC2894A5DAAD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,10 +43,10 @@ Global
 		{D2092A88-4798-4330-89E2-90C954BF51C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2092A88-4798-4330-89E2-90C954BF51C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2092A88-4798-4330-89E2-90C954BF51C6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{11570E84-EB0D-4FA5-8773-A09BAA2C257A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11570E84-EB0D-4FA5-8773-A09BAA2C257A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11570E84-EB0D-4FA5-8773-A09BAA2C257A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11570E84-EB0D-4FA5-8773-A09BAA2C257A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE153FD6-1514-40E5-A90E-EC2894A5DAAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE153FD6-1514-40E5-A90E-EC2894A5DAAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE153FD6-1514-40E5-A90E-EC2894A5DAAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE153FD6-1514-40E5-A90E-EC2894A5DAAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,5 +57,8 @@ Global
 		{B61D80A0-D6F2-4510-8E92-B0E128F12A68} = {79340958-3433-4BBB-A09F-E09439EC587A}
 		{AB0077B6-D2A6-4C22-8FA3-333EA33F2597} = {79340958-3433-4BBB-A09F-E09439EC587A}
 		{D2092A88-4798-4330-89E2-90C954BF51C6} = {79340958-3433-4BBB-A09F-E09439EC587A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9FBC40D1-FF3E-4794-945F-96672E450FF6}
 	EndGlobalSection
 EndGlobal

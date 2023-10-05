@@ -1,16 +1,19 @@
+#See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
+
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 WORKDIR /app
 EXPOSE 80
+EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["src/Kambam.API/Kambam.API.csproj", "src/Kambam.API/"]
-COPY ["src/Kambam.Infra/Kambam.Infra.csproj", "src/Kambam.Infra/"]
-COPY ["src/Kambam.Domain/Kambam.Domain.csproj", "src/Kambam.Domain/"]
-COPY ["src/Kambam.Service/Kambam.Service.csproj", "src/Kambam.Service/"]
-RUN dotnet restore "src/Kambam.API/Kambam.API.csproj"
+COPY ["BACK/src/Kambam.API/Kambam.API.csproj", "BACK/src/Kambam.API/"]
+COPY ["BACK/src/Kambam.Infra/Kambam.Infra.csproj", "BACK/src/Kambam.Infra/"]
+COPY ["BACK/src/Kambam.Domain/Kambam.Domain.csproj", "BACK/src/Kambam.Domain/"]
+COPY ["BACK/src/Kambam.Service/Kambam.Service.csproj", "BACK/src/Kambam.Service/"]
+RUN dotnet restore "BACK/src/Kambam.API/Kambam.API.csproj"
 COPY . .
-WORKDIR "/src/src/Kambam.API"
+WORKDIR "/src/BACK/src/Kambam.API"
 RUN dotnet build "Kambam.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
