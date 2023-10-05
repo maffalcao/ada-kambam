@@ -1,0 +1,18 @@
+version: "3.4"
+
+services:
+  kambamdb:
+    image: postgres
+
+  postgresadmin:
+    image: dpage/pgadmin4
+
+  kambam.api:
+    image: ${DOCKER_REGISTRY-}kambamapi
+    build:
+      context: .
+      dockerfile: BACK/src/Kambam.API/Dockerfile
+
+volumes:
+  postgres_data:
+  pgadmin_data:

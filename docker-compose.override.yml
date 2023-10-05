@@ -1,0 +1,35 @@
+version: "3.4"
+
+services:
+  kambamdb:
+    container_name: kambamdb
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin@1234
+      - POSTGRES_DB=Kambam
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+  postgresadmin:
+    container_name: postgresadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@kambam.com
+      - PGADMIN_DEFAULT_PASSWORD=admin@1234
+    restart: always
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/root/.pgadmin
+
+  kambam.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - "ConnectionStrings:Postgres=Server=kambamdb;Port=5432;Database=Kambam;User Id=admin;Password=admin@1234;"
+    depends_on:
+      - kambamdb
+    ports:
+      - "8080:80"

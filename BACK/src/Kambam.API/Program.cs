@@ -1,5 +1,6 @@
 using System.Text;
 using Kambam.API.Authentication;
+using Kambam.API.Services;
 using Kambam.Domain.Interfaces;
 using Kambam.Infra.Context;
 using Kambam.Infra.Repositories;
@@ -57,7 +58,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddControllers();
 var app = builder.Build();
 
-app.UseHttpsRedirection();
+DatabaseManagementService.MigrationInitialisation(app);
 
 app.UseAuthentication();
 
