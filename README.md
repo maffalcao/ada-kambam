@@ -5,6 +5,7 @@ Esta é uma _API RESTful_ que gerencia um quadro de kanban, permitindo a criaç�
 **Para executar a aplicação:**
 
 - Clonar o projeto
+- Definir um appsettings.Development.json para BACK/src/Kambam.API ([exemplo aqui](BACK/src/Kambam.API/appsettings.example.json))
 - Dentro da pasta do projeto, rodar o comando `docker compose up`
 
 Isso iniciará o serviço da API, o serviço do banco de dados _PostgreSQL_ e aplicará as migrações para criar a estrutura do banco de dados.
