@@ -2,7 +2,7 @@
 
 Esta é uma _API RESTful_ que gerencia um quadro de kanban, permitindo a criação, leitura, atualização e exclusão de cartões (cards) em listas.
 
-###Para executar a aplicação:
+### Para executar a aplicação:
 
 - Clonar o projeto
 - Definir um appsettings.Development.json para BACK/src/Kambam.API ([exemplo aqui](BACK/src/Kambam.API/appsettings.example.json))
@@ -15,7 +15,7 @@ Isso iniciará o serviço da API, o serviço do banco de dados _PostgreSQL_ e ap
 - [coleção do postamn para as apis de listagem, cadastro, atualização e remoção de cards bem como do login](BACK/postman_collection.json)
 - o endereço para o gerenciador de banco de dados web estará disponível em http://localhost:5050
 
-###Para executar os testes unitários:
+### Para executar os testes unitários:
 - No projeto clonado, acessar a pasta BACK/src/Kambam.Tests
 - Rodar o comando `dotnet test`
 
