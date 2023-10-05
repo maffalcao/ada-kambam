@@ -1,5 +1,5 @@
 using System.Net;
-using Kambam.Domain.Entities;
+using Kambam.Service.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,9 +20,7 @@ public class CardsController : ControllerBase
     }
 
     [HttpGet()]
-    [ProducesResponseType(typeof(List<CardEntity>), (int)HttpStatusCode.OK)]
-    [ProducesResponseType((int)HttpStatusCode.NoContent)]
-    public async Task<ActionResult<List<CardEntity>>> GetAll()
+    public async Task<ActionResult<List<CardWithIdDto>>> GetAll()
     {
         var result = await _cardService.GetAll();
 
@@ -33,18 +31,8 @@ public class CardsController : ControllerBase
     }
 
     [HttpPost()]
-    [ProducesResponseType(typeof(CardEntity), (int)HttpStatusCode.OK)]
-    [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-    public async Task<ActionResult<CardEntity>> Insert([FromBody] CardEntity card)
+    public async Task<ActionResult<CardWithIdDto>> Insert([FromBody] CardDto card)
     {
-        // TODO: use FluentValidation
-
-        if (card.Id > 0)
-            return BadRequest("'id' cant be higher than 0");
-
-        if (card.IsValid() is false)
-            return BadRequest("'conteudo' and 'lista' is mandatory");
-
         var result = await _cardService.Add(card);
 
         if (result.IsSuccess is false)
@@ -54,18 +42,9 @@ public class CardsController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
-    [ProducesResponseType(typeof(CardEntity), (int)HttpStatusCode.OK)]
-    [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-    public async Task<ActionResult<CardEntity>> Update([FromRoute] int id, [FromBody] CardEntity card)
+    public async Task<ActionResult<CardWithIdDto>> Update([FromRoute] int id, [FromBody] CardWithIdDto card)
     {
         card.Id = id;
-
-        // TODO: use FluentValidation
-        if (card.Id is 0)
-            return BadRequest("'id' cant be 0");
-
-        if (card.IsValid() is false)
-            return BadRequest("'conteudo' and 'lista' is mandatory");
 
         var result = await _cardService.Change(card);
 
@@ -78,9 +57,7 @@ public class CardsController : ControllerBase
     }
 
     [HttpDelete("{id:int}")]
-    [ProducesResponseType(typeof(List<CardEntity>), (int)HttpStatusCode.OK)]
-    [ProducesResponseType((int)HttpStatusCode.NotFound)]
-    public async Task<ActionResult<CardEntity>> Delete([FromRoute] int id)
+    public async Task<ActionResult<List<CardWithIdDto>>> Delete([FromRoute] int id)
     {
         var result = await _cardService.Remove(id);
 

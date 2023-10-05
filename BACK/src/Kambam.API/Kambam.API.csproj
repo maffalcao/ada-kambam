@@ -25,13 +25,12 @@
     </PackageReference>
 
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.2" />
-  </ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+  </ItemGroup> 
 
-  
-
-  <ItemGroup>
-    <ProjectReference Include="..\Kambam.Domain\Kambam.Domain.csproj" />
+  <ItemGroup>    
     <ProjectReference Include="..\Kambam.Infra\Kambam.Infra.csproj" />
+    <ProjectReference Include="..\Kambam.Service\Kambam.Service.csproj" />
   </ItemGroup>
 
 </Project>
