@@ -9,8 +9,8 @@ Esta é uma _API RESTful_ que gerencia um quadro de kanban, permitindo a criaç�
 
 Isso iniciará o serviço da API, o serviço do banco de dados _PostgreSQL_ e aplicará as migrações para criar a estrutura do banco de dados.
 
-- o endereço da frontend da aplicação estará disponível em http://localhost:5000 (não funciona, explicação mais abaixo).
-- endereço do backend da aplicação estará disponível em http://localhost:5000 (coleção do postamn para as apis de listagem, cadastro, atualização e remoção de cards bem como do login).
+- o endereço da frontend da aplicação estará disponível em ![http://localhost:5000](http://localhost:5000) (não funcionará, explicação mais abaixo).
+- endereço do backend da aplicação estará disponível em ![http://localhost:5001](http://localhost:5001) (![coleção do postamn para as apis de listagem, cadastro, atualização e remoção de cards bem como do login](BACK/postman_collection.json)).
 - o endereço para o gerenciador de banco de dados web estará disponível em http://localhost:5050
 
 ### Estrutura do Projeto
