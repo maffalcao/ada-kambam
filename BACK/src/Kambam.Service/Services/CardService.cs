@@ -35,18 +35,22 @@ public class CardService : ICardService
     }
 
 
-    public async Task<CardServiceResult> Change(CardWithIdDto cardWithIdDto)
+    public async Task<CardServiceResult> Change(int cardId, CardDto cardDto)
     {
 
         var result = CardServiceResult.Get();
 
-        var cardToChange = _mapper.Map<CardEntity>(cardWithIdDto);
+        var cardToChange = _mapper.Map<CardEntity>(cardDto);
+        cardToChange.SetId(cardId);
+
         var changedCard = await _repository.UpdateAsync(cardToChange);
 
         if (changedCard is null)
         {
             return result.Fail($"Card {cardToChange.Id} does not exist");
         }
+
+        var cardWithIdDto = _mapper.Map<CardWithIdDto>(changedCard);
 
         return result.AddCard(cardWithIdDto);
     }

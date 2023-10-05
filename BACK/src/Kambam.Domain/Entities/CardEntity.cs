@@ -11,4 +11,9 @@ public class CardEntity
     {
         return (Conteudo is not null) && (Lista is not null);
     }
+
+    public void SetId(int id)
+    {
+        Id = id;
+    }
 }
