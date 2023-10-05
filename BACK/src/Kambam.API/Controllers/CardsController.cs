@@ -31,22 +31,27 @@ public class CardsController : ControllerBase
     }
 
     [HttpPost()]
-    public async Task<ActionResult<CardWithIdDto>> Insert([FromBody] CardDto card)
+    public async Task<ActionResult<CardWithIdDto>> Insert([FromBody] CardDto cardDto)
     {
-        var result = await _cardService.Add(card);
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
 
-        if (result.IsSuccess is false)
-            return StatusCode((int)HttpStatusCode.InternalServerError, result.Message);
-
+        var result = await _cardService.Add(cardDto);
         return Ok(result.Card);
     }
 
     [HttpPut("{id:int}")]
-    public async Task<ActionResult<CardWithIdDto>> Update([FromRoute] int id, [FromBody] CardWithIdDto card)
+    public async Task<ActionResult<CardWithIdDto>> Update([FromRoute] int id, [FromBody] CardDto cardDto)
     {
-        card.Id = id;
 
-        var result = await _cardService.Change(card);
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        var result = await _cardService.Change(id, cardDto);
 
         if (result.IsSuccess is false)
             return NotFound(result.Message);

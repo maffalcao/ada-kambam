@@ -5,6 +5,6 @@ public interface ICardService
 {
     Task<CardsServiceResult> GetAll();
     Task<CardServiceResult> Add(CardDto cardDto);
-    Task<CardServiceResult> Change(CardWithIdDto cardWithIdDto);
+    Task<CardServiceResult> Change(int cardId, CardDto cardWithIdDto);
     Task<CardsServiceResult> Remove(int id);
 }

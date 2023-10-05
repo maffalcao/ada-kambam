@@ -17,7 +17,6 @@ builder.Services.AddAutoMapper(typeof(Program).Assembly);
 // Configure JWT authentication for securing API endpoints.
 builder.Services.AddAuthentication(jwt =>
 {
-
     jwt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     jwt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 }).AddJwtBearer(o =>
@@ -48,18 +47,9 @@ builder.Services.AddDbContext<MyContext>(
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 builder.Services.AddControllers();
-
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
 
 app.UseHttpsRedirection();
 
