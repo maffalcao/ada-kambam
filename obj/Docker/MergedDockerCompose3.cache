@@ -1,0 +1,69 @@
+name: dockercompose3899596413913525057
+services:
+  kambam.api:
+    build:
+      context: C:\git\ada-kambam-backend
+      dockerfile: BACK/src/Kambam.API/Dockerfile
+    depends_on:
+      kambamdb:
+        condition: service_started
+        required: true
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:80
+      ConnectionStrings:Postgres: Server=kambamdb;Port=5432;Database=Kambam;User Id=admin;Password=admin@1234;
+    image: kambamapi
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      published: "5000"
+      protocol: tcp
+  kambamdb:
+    container_name: kambamdb
+    environment:
+      POSTGRES_DB: Kambam
+      POSTGRES_PASSWORD: admin@1234
+      POSTGRES_USER: admin
+    image: postgres
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 5432
+      published: "5432"
+      protocol: tcp
+    restart: always
+    volumes:
+    - type: volume
+      source: postgres_data
+      target: /var/lib/postgresql/data
+      volume: {}
+  postgresadmin:
+    container_name: postgresadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@kambam.com
+      PGADMIN_DEFAULT_PASSWORD: admin@1234
+    image: dpage/pgadmin4
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      published: "5050"
+      protocol: tcp
+    restart: always
+    volumes:
+    - type: volume
+      source: pgadmin_data
+      target: /root/.pgadmin
+      volume: {}
+networks:
+  default:
+    name: dockercompose3899596413913525057_default
+volumes:
+  pgadmin_data:
+    name: dockercompose3899596413913525057_pgadmin_data
+  postgres_data:
+    name: dockercompose3899596413913525057_postgres_data

@@ -18,10 +18,12 @@
 					}
 				],
 				"url": {
-					"raw": "{{kamban_host}}/Cards",
+					"raw": "http://localhost:5000/Cards",
+					"protocol": "http",
 					"host": [
-						"{{kamban_host}}"
+						"localhost"
 					],
+					"port": "5000",
 					"path": [
 						"Cards"
 					]
@@ -36,7 +38,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"login\": \"bla\",\r\n    \"senha\": \"ble\"\r\n}",
+					"raw": "{\r\n    \"login\": \"letscode\",\r\n    \"senha\": \"lets@123\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -44,10 +46,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{kamban_host}}/Login",
+					"raw": "http://localhost:5000/Login",
+					"protocol": "http",
 					"host": [
-						"{{kamban_host}}"
+						"localhost"
 					],
+					"port": "5000",
 					"path": [
 						"Login"
 					]
@@ -68,7 +72,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{  \r\n  \"titulo\": \"finalizar o teste técnico\",\r\n  \"conteudo\": \"O objeti é finalizar o teste técnico com a maior qualidade possível\",\r\n  \"lista\": \"Fazendo\"\r\n}",
+					"raw": "{  \r\n  \"titulo\": \"finalizar o teste técnico\",\r\n  \"conteudo\": \"O objetivo é finalizar o teste técnico com a maior qualidade possível\",\r\n  \"lista\": \"Fazendo\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -76,10 +80,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{kamban_host}}/cards",
+					"raw": "http://localhost:5000/cards",
+					"protocol": "http",
 					"host": [
-						"{{kamban_host}}"
+						"localhost"
 					],
+					"port": "5000",
 					"path": [
 						"cards"
 					]
@@ -100,7 +106,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{  \r\n    \"id\": 0,\r\n    \"titulo\": \"finalizar o teste técnico\",\r\n    \"conteudo\": \"O objeti é finalizar o teste técnico com a maior qualidade possível\",\r\n    \"lista\": \"Feito\"\r\n}\r\n",
+					"raw": "{      \r\n    \"titulo\": \"finalizar o teste técnico\",\r\n    \"conteudo\": \"O objetivo é finalizar o teste técnico com a maior qualidade possível\",\r\n    \"lista\": \"Feito\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -108,10 +114,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{kamban_host}}/cards/{{kambam_cardId}}",
+					"raw": "http://localhost:5000/cards/{{kambam_cardId}}",
+					"protocol": "http",
 					"host": [
-						"{{kamban_host}}"
+						"localhost"
 					],
+					"port": "5000",
 					"path": [
 						"cards",
 						"{{kambam_cardId}}"
@@ -132,10 +140,12 @@
 					}
 				],
 				"url": {
-					"raw": "{{kamban_host}}/cards/{{kambam_cardId}}",
+					"raw": "http://localhost:5000/cards/{{kambam_cardId}}",
+					"protocol": "http",
 					"host": [
-						"{{kamban_host}}"
+						"localhost"
 					],
+					"port": "5000",
 					"path": [
 						"cards",
 						"{{kambam_cardId}}"
