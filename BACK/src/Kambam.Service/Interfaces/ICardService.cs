@@ -3,8 +3,8 @@ using Kambam.Service.Dtos;
 
 public interface ICardService
 {
-    Task<CardsProcessingResult> GetAll();
-    Task<CardProcessingResult> Add(CardEntity card);
-    Task<CardProcessingResult> Change(CardEntity card);
-    Task<CardsProcessingResult> Remove(int id);
+    Task<CardsServiceResult> GetAll();
+    Task<CardServiceResult> Add(CardDto cardDto);
+    Task<CardServiceResult> Change(CardWithIdDto cardWithIdDto);
+    Task<CardsServiceResult> Remove(int id);
 }

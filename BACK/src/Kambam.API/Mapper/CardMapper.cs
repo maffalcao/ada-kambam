@@ -2,7 +2,7 @@ using AutoMapper;
 using Kambam.Domain.Entities;
 using Kambam.Service.Dtos;
 
-namespace Kambam.Service.Mapper;
+namespace Kambam.API.Mapper;
 
 public class CardMapperProfile : Profile
 {

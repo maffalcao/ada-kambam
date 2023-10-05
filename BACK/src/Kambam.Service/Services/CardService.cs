@@ -1,3 +1,4 @@
+using AutoMapper;
 using Kambam.Domain.Entities;
 using Kambam.Domain.Interfaces;
 using Kambam.Service.Dtos;
@@ -8,63 +9,70 @@ namespace Kambam.Services.Services;
 public class CardService : ICardService
 {
     private readonly ICardRepository _repository;
+    private readonly IMapper _mapper;
 
-    public CardService(ICardRepository repository)
+    public CardService(ICardRepository repository, IMapper mapper)
     {
         _repository = repository;
+        _mapper = mapper;
     }
 
-    public async Task<CardProcessingResult> Add(CardEntity card)
+    public async Task<CardServiceResult> Add(CardDto cardDto)
     {
-        var newCard = await _repository.InsertAsync(card);
-        var result = CardProcessingResult.Get(newCard);
+        var result = CardServiceResult.Get();
+
+        var cardToAdd = _mapper.Map<CardEntity>(cardDto);
+        var newCard = await _repository.InsertAsync(cardToAdd);
 
         if (newCard is null)
-            result.Fail("Error trying to add a new card");
+        {
+            return result.Fail("Error trying to add a new card");
+        }
 
-        return CardProcessingResult.Get(newCard);
+        var cardWithIdDto = _mapper.Map<CardWithIdDto>(newCard);
+
+        return result.AddCard(cardWithIdDto);
     }
 
 
-    public async Task<CardProcessingResult> Change(CardEntity card)
+    public async Task<CardServiceResult> Change(CardWithIdDto cardWithIdDto)
     {
-        var result = CardProcessingResult.Get(card);
 
-        var changedCard = await _repository.UpdateAsync(card);
+        var result = CardServiceResult.Get();
+
+        var cardToChange = _mapper.Map<CardEntity>(cardWithIdDto);
+        var changedCard = await _repository.UpdateAsync(cardToChange);
 
         if (changedCard is null)
         {
-            result.Fail($"Card {card.Id} does not exist");
-            return result;
+            return result.Fail($"Card {cardToChange.Id} does not exist");
         }
 
-        return result;
+        return result.AddCard(cardWithIdDto);
     }
 
-    public async Task<CardsProcessingResult> GetAll()
+    public async Task<CardsServiceResult> GetAll()
     {
         var cards = await _repository.GetAllAsync();
-        return CardsProcessingResult.Get(cards);
+        var cardDtos = _mapper.Map<List<CardWithIdDto>>(cards);
+
+        return CardsServiceResult.Get(cardDtos);
     }
 
-    public async Task<CardsProcessingResult> Remove(int id)
+    public async Task<CardsServiceResult> Remove(int id)
     {
-        var result = CardsProcessingResult.Get();
+        var result = CardsServiceResult.Get();
 
         var deleteSuccessfully = await _repository.DeleteAsync(id);
 
         if (deleteSuccessfully is false)
         {
-            result.Fail($"Card {id} does not exist");
-            return result;
+            return result.Fail($"Card {id} does not exist");
         }
 
-        var cards = await _repository.GetAllAsync();
-        result.AddCards(cards);
+        result = await GetAll();
 
         return result;
-
-
     }
 
 }
