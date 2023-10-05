@@ -5,7 +5,7 @@ Esta é uma _API RESTful_ que gerencia um quadro de kanban, permitindo a criaç�
 **Para executar a aplicação:**
 
 - Clonar o projeto
-- Dentro da pasta do projeto, rodar o comando docker compose up
+- Dentro da pasta do projeto, rodar o comando `docker compose up`
 
 Isso iniciará o serviço da API, o serviço do banco de dados _PostgreSQL_ e aplicará as migrações para criar a estrutura do banco de dados.
 
@@ -32,5 +32,7 @@ A estrutura do projeto segue os princípios:
 **Observação**
 
 O frontend apresenta problemas em função de algo faltando no processo de compilação ao rodar _yarn start_, como orienta a documentação. Após várias tentativas entre desinstalção e instalação do node, yarn, remoção de node_modules e reistalação de todos os pactoes, o erro persistiu. Por favor, se souber qual o problema me avise que faço a correção imediata. O erro:
+
+![](assets/yarn_start_error.png)
 
 Apesar disso, o front foi parametrizado com variáveis de ambientes em suas urls que são chamadas no cardService.js (para tornar dinamico esse endereço dentro da rede do docker compose), criado seu Dockerfile e adicionado aos serviços do docker compose.
