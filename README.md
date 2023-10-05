@@ -15,6 +15,10 @@ Isso iniciará o serviço da API, o serviço do banco de dados _PostgreSQL_ e ap
 - [coleção do postamn para as apis de listagem, cadastro, atualização e remoção de cards bem como do login](BACK/postman_collection.json)
 - o endereço para o gerenciador de banco de dados web estará disponível em http://localhost:5050
 
+**Para executar os testes unitários:**
+- No projeto clonado, acessar a pasta BACK/src/Kambam.Tests
+- Rodar o comando `dotnet test`
+
 ### Estrutura do Projeto
 A estrutura do projeto segue os princípios:
 
