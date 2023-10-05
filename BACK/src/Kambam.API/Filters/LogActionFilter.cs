@@ -27,7 +27,7 @@ public class LogActionFilter : IActionFilter
             {
                 if (context.RouteData.Values.TryGetValue("id", out var id))
                 {
-                    Match match = Regex.Match(actionName, @"\b(update|delete)\b", RegexOptions.IgnoreCase);
+                    var match = Regex.Match(actionName, @"\b(update|delete)\b", RegexOptions.IgnoreCase);
                     var utcNow = DateTime.UtcNow.ToString("dd/MM/yyyy HH:mm:ss");
                     var message = $"{utcNow} - Card {id} - {match.Value}";
 
