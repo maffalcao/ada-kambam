@@ -40,6 +40,8 @@ public class JWTManagerRepository : IJWTManagerRepository
             Expires = DateTime.UtcNow.AddMinutes(10),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
         };
+
+        
         var token = tokenHandler.CreateToken(tokenDescriptor);
         return new Tokens { Token = tokenHandler.WriteToken(token) };
 
